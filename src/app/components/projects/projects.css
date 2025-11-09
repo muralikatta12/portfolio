@@ -1,21 +1,119 @@
-.project-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
+:host {
+    display: block; 
+    background-color: #1a1a1a;
 }
 
-.project-card {
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(10px);
-  padding: 20px;
-  width: 280px;
-  border-radius: 16px;
-  box-shadow: 0 0 15px rgba(0,255,255,0.3);
-  transition: transform 0.4s, box-shadow 0.4s;
+/* --- Filter Dashboard Styles --- */
+/* Keyframe removed as requested, leaving the active class static */
+@keyframes activePulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 163, 255, 0.7); }
+    50% { transform: scale(1.02); box-shadow: 0 0 10px rgba(0, 163, 255, 0.9); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 163, 255, 0); }
 }
 
-.project-card:hover {
-  transform: rotateY(10deg) scale(1.05);
-  box-shadow: 0 0 25px rgba(0,255,255,0.6);
+.project-filter-dashboard {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 10px;
+    background-color: #0d0d0d;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 163, 255, 0.2);
+    box-shadow: 0 0 10px rgba(0, 163, 255, 0.2);
+}
+
+.filter-button {
+    background-color: transparent;
+    color: #c0c0c0;
+    border: 1px solid transparent;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.filter-button:hover {
+    color: #00A3FF;
+    border-color: #00A3FF;
+}
+
+.filter-button.active {
+    background-color: #00A3FF;
+    color: #121212;
+    border-color: #00A3FF;
+    font-weight: 700;
+    /* Animation removed per request */
+}
+
+/* --- Dashboard Project Tile (Static) --- */
+.dashboard-tile {
+    background-color: #252525;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 8px;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.4s ease;
+    position: relative;
+    /* transform/box-shadow removed from hover for static effect */
+}
+
+.dashboard-tile:hover {
+    /* Base styles remain, but no animation/movement: */
+    border-color: #00A3FF;
+}
+
+.project-title {
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.project-category {
+    font-size: 0.8rem;
+    color: #06D6A0; 
+    display: block;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.project-description {
+    color: #c0c0c0;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+
+.tech-tag {
+    display: inline-block;
+    background-color: rgba(0, 163, 255, 0.1);
+    color: #00A3FF;
+    padding: 4px 8px;
+    margin: 2px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+}
+
+.project-link-button {
+    display: inline-block;
+    color: #00A3FF;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid #00A3FF;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    align-self: flex-start;
+    cursor: pointer; 
+} 
+
+.project-link-button:hover {
+    background-color: #00A3FF; 
+    color: #121212; 
+    /* box-shadow removed per request */
 }

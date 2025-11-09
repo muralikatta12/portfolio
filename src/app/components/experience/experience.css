@@ -1,37 +1,141 @@
+:host {
+    display: block; 
+    background-color: #1a1a1a; 
+}
+
+/* --- Timeline Container Setup --- */
 .timeline {
-  position: relative;
-  margin-top: 40px;
-  padding-left: 40px;
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 50px;
 }
 
+/* --- The Wavy Candy Track --- */
 .train-track {
-  position: absolute;
-  left: 20px;
-  top: 0;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(180deg, #00f7ff, #007bff);
-  border-radius: 2px;
-  box-shadow: 0 0 10px #00f7ff;
+    position: absolute;
+    width: 10px; 
+    background: linear-gradient(
+        to bottom, 
+        #FF6B6B, /* Red-Pink */
+        #FFD166, /* Yellow-Orange */
+        #06D6A0, /* Green */
+        #118AB2  /* Deep Blue */
+    );
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.7); 
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -5px;
+    border-radius: 5px;
+    
+    animation: pulseTrack 3s infinite alternate; 
 }
 
+@keyframes pulseTrack {
+    from { box-shadow: 0 0 10px rgba(255, 107, 107, 0.5); }
+    to { box-shadow: 0 0 20px rgba(255, 210, 100, 0.8); }
+}
+
+/* --- The Stop Boxes (The "Candy/Level Boxes") --- */
 .stop {
-  position: relative;
-  margin-bottom: 60px;
-  padding-left: 30px;
-  border-left: 4px solid transparent;
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    margin-bottom: 70px; 
+    text-align: right;
+    
+    transform: perspective(400px) rotateY(2deg);
+    transition: all 0.5s ease;
 }
 
-.stop::before {
-  content: '🚉';
-  position: absolute;
-  left: -40px;
-  top: 0;
-  font-size: 24px;
-  animation: bounce 2s infinite;
+.stop:nth-child(even) { 
+    left: 0; 
+    text-align: left; 
+    transform: perspective(400px) rotateY(-2deg);
+}
+.stop:nth-child(odd) { 
+    left: 50%; 
+    transform: perspective(400px) translateX(-10%) rotateY(2deg);
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+/* --- The Box Styling and Unlocking Effect --- */
+.stop > * {
+    padding: 20px;
+    background-color: #2a2a2a; 
+    border: 3px solid #FFD166; 
+    border-radius: 15px; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- UNLOCKING Effect on Hover/Focus --- */
+.stop:hover > *, .stop:focus-within > * {
+    background-color: #333344; 
+    border-color: #00A3FF; 
+    box-shadow: 0 0 25px rgba(0, 163, 255, 0.9); 
+    transform: scale(1.05); 
+}
+
+
+/* --- The Icon Marker (The "Candy" Marker) --- */
+.stop::after {
+    content: '★'; 
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: -25px;
+    background-color: #1a1a1a;
+    border: 4px solid #FF6B6B; 
+    color: #FFD166; 
+    top: 10px;
+    border-radius: 50%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 900;
+    box-shadow: 0 0 10px #FF6B6B;
+}
+
+.stop:nth-child(even)::after { left: -20px; }
+
+/* Text Styles */
+.stop-title {
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+.stop-role {
+    color: #06D6A0; 
+    margin: 0;
+    font-weight: 600;
+}
+
+.stop small {
+    display: block;
+    margin-top: 5px;
+    color: #c0c0c0; 
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .train-track { left: 20px; }
+    .stop {
+        width: 100%;
+        padding-left: 60px;
+        text-align: left !important;
+        left: 0 !important;
+        transform: perspective(0) rotateY(0) !important; 
+    }
+    .stop > * {
+        padding: 15px;
+    }
+    .stop::after { left: 0px !important; }
 }

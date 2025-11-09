@@ -1,37 +1,144 @@
+/* --- Global Styles: Code Grid Theme --- */
 body {
   margin: 0;
-  background: radial-gradient(circle at top left, #020024, #090979, #00d4ff);
-  font-family: "Poppins", sans-serif;
+  background: #121212; /* Dark Charcoal Gray */
+  font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
-  color: #e0e0e0;
+  color: #c0c0c0; /* Light Gray text for readability */
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
+/* Base Section Styling */
 section {
   padding: 100px 20px;
-  min-height: 100vh;
+  min-height: 85vh; 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  position: relative;
+  /* Subtle grid pattern background for the theme */
+  background-image: linear-gradient(0deg, transparent 95%, rgba(0, 163, 255, 0.05) 100%), 
+                    linear-gradient(90deg, transparent 95%, rgba(0, 163, 255, 0.05) 100%);
+  background-size: 50px 50px;
 }
 
-h1, h2 {
-  color: #00eaff;
+/* --- Typography and Titles --- */
+h2 {
+  color: #FFFFFF; /* Pure White Title */
   font-weight: 700;
-  text-shadow: 0 0 10px rgba(0, 234, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 40px;
+  position: relative;
+}
+h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: #00A3FF; /* Tech Blue underline */
+    margin: 10px auto 0;
+    border-radius: 2px;
 }
 
-button {
-  background: transparent;
-  border: 2px solid #00eaff;
-  color: #00eaff;
-  padding: 10px 25px;
-  border-radius: 25px;
-  transition: all 0.3s;
+strong {
+    color: #00A3FF;
 }
-button:hover {
-  background: #00eaff;
-  color: #000;
-  box-shadow: 0 0 20px #00eaff;
+
+/* --- Custom Button Styling --- */
+.custom-button {
+  background: transparent;
+  border: 2px solid #00A3FF;
+  color: #00A3FF;
+  padding: 12px 30px;
+  border-radius: 5px; /* Squared off for geometric look */
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  letter-spacing: 1px;
+}
+.custom-button:hover {
+  background: #00A3FF;
+  color: #121212;
+  box-shadow: 0 0 15px rgba(0, 163, 255, 0.7);
+  transform: translateY(-2px);
+}
+
+/* --- Project Card Base Style --- */
+.project-card {
+    background-color: #1e1e1e; /* Slightly lighter inner background */
+    border: 1px solid rgba(0, 163, 255, 0.2);
+    padding: 30px;
+    height: 100%;
+    text-align: left;
+    border-radius: 8px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background-color: #00A3FF; /* Left side accent bar */
+    transition: width 0.3s;
+}
+
+.project-card:hover {
+    background-color: #252525;
+    box-shadow: 0 0 25px rgba(0, 163, 255, 0.5);
+    transform: translateY(-5px);
+}
+.project-card:hover::before {
+    width: 100%;
+    opacity: 0.1;
+}
+
+.project-card h4 {
+    color: #00A3FF; /* Tech Blue Title */
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.tech-tag {
+    display: inline-block;
+    background-color: #333;
+    color: #FFFFFF;
+    padding: 5px 12px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin-top: 15px;
+    border: 1px solid #00A3FF;
+}
+
+/* --- Contact Section Links --- */
+#contact a {
+    color: #00A3FF;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#contact a:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: #0a0a0a;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #888;
+    text-align: center;
+    padding: 20px 0;
 }

@@ -1,25 +1,104 @@
-.scroll-banner {
-  overflow: hidden;
-  white-space: nowrap;
-  position: relative;
-  border-top: 2px solid rgba(255,255,255,0.1);
-  border-bottom: 2px solid rgba(255,255,255,0.1);
-  margin-top: 30px;
+:host {
+    display: block; 
+    background-color: #1a1a1a;
 }
 
-.scroll-content {
-  display: inline-flex;
-  align-items: center;
-  gap: 60px;
-  animation: scroll 20s linear infinite;
+.skill-grid {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.scroll-content img {
-  height: 60px;
-  filter: drop-shadow(0 0 8px #00f7ff);
+.skill-tile {
+    /* Base Tile Styles */
+    background-color: #252525; 
+    border: 1px solid rgba(0, 163, 255, 0.2);
+    padding: 15px 10px;
+    border-radius: 8px;
+    height: 150px; /* Fixed height for clean grid alignment */
+    transition: all 0.4s ease-out;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden; /* Crucial for hiding the overlay content */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-@keyframes scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+.skill-icon {
+    height: 50px; 
+    margin-bottom: 5px;
+    transition: all 0.4s;
+}
+
+.skill-name {
+    color: #c0c0c0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0;
+    transition: opacity 0.4s;
+}
+
+/* --- Hover/Overlay Content --- */
+.proficiency-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00A3FF; /* Solid blue background on hover */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    /* Start hidden and slide up */
+    transform: translateY(100%); 
+    transition: transform 0.4s ease-out;
+    z-index: 10;
+}
+
+.overlay-level {
+    color: #121212;
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Progress Bar within the Overlay */
+.progress {
+    height: 10px;
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    border: none;
+}
+
+.progress-bar {
+    background-color: #121212; /* Dark bar for contrast */
+    transition: width 1.5s ease-out; 
+    height: 100%;
+    border-radius: 5px;
+}
+
+/* --- Tile Hover State (The magic happens here) --- */
+.skill-tile:hover {
+    transform: translateY(-5px);
+    border-color: #00A3FF;
+    box-shadow: 0 0 20px rgba(0, 163, 255, 0.7); 
+}
+
+/* On hover, slide the overlay up to cover the icon */
+.skill-tile:hover .proficiency-overlay {
+    transform: translateY(0);
+}
+
+/* On hover, hide the icon and name */
+.skill-tile:hover .skill-icon,
+.skill-tile:hover .skill-name {
+    opacity: 0;
+    transform: scale(0.8);
 }
