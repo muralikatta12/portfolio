@@ -1,0 +1,37 @@
+.timeline {
+  position: relative;
+  margin-top: 40px;
+  padding-left: 40px;
+}
+
+.train-track {
+  position: absolute;
+  left: 20px;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #00f7ff, #007bff);
+  border-radius: 2px;
+  box-shadow: 0 0 10px #00f7ff;
+}
+
+.stop {
+  position: relative;
+  margin-bottom: 60px;
+  padding-left: 30px;
+  border-left: 4px solid transparent;
+}
+
+.stop::before {
+  content: '🚉';
+  position: absolute;
+  left: -40px;
+  top: 0;
+  font-size: 24px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}

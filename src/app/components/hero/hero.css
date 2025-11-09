@@ -1,0 +1,9 @@
+.glow-text {
+  text-shadow: 0 0 15px #00f7ff, 0 0 30px #007bff;
+  font-weight: 900;
+  color: #fff;
+}
+
+.highlight {
+  color: #66fcf1;
+}
